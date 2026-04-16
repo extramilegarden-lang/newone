@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extramile Garden — Abomey-Calavi, Bénin · Restaurant, Bar, Pizzeria, Events</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --green-deep: #0d1f14; --green-mid: #1a3a22; --green-accent: #2d5e38;
+  --gold: #c8a45a; --gold-light: #e2c27a;
+  --cream: #f5f0e8; --ivory: #fdfaf4; --text-muted: #9a9485;
+  --border: rgba(200,164,90,0.2);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--green-deep); color: var(--cream); overflow-x: hidden; }
+
+.bg-layer { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 0; }
+.bg-overlay { position: absolute; inset: 0; z-index: 1; }
+
+/* SPLASH */
+#lang-splash { position: fixed; inset: 0; z-index: 9999; background: var(--green-deep); display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.7s ease, visibility 0.7s; overflow: hidden; }
+#lang-splash .bg-layer { background-image: url('images/greenwall.jpg'); filter: brightness(0.35) blur(2px); }
+#lang-splash .bg-overlay { background: radial-gradient(ellipse at center, rgba(13,31,20,0.75) 0%, rgba(13,31,20,0.95) 75%); }
+#lang-splash > *:not(.bg-layer):not(.bg-overlay) { position: relative; z-index: 2; }
+#lang-splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.splash-logo { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 4.8rem); font-weight: 300; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 0.4rem; text-align: center; }
+.splash-logo em { font-style: italic; color: var(--gold-light); }
+.splash-sub { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3.5rem; text-align: center; }
+.splash-line { width: 60px; height: 0.5px; background: var(--border); margin-bottom: 2.5rem; }
+.splash-prompt { font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; text-align: center; padding: 0 1rem; }
+.lang-btns { display: flex; }
+.lang-btn { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.1em; padding: 1.2rem 3.2rem; border: 0.5px solid var(--border); background: rgba(13,31,20,0.4); backdrop-filter: blur(4px); color: var(--cream); cursor: pointer; transition: background 0.25s, color 0.25s, border-color 0.25s; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+.lang-btn:hover { background: var(--gold); color: var(--green-deep); border-color: var(--gold); }
+.lang-btn + .lang-btn { border-left: none; }
+.lang-flag { font-size: 0.62rem; letter-spacing: 0.2em; font-family: 'Jost', sans-serif; color: var(--text-muted); }
+.lang-btn:hover .lang-flag { color: var(--green-deep); }
+
+/* NAV */
+nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.3rem 4rem; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(13,31,20,0.92), rgba(13,31,20,0.5) 70%, transparent); transition: background 0.4s; }
+nav.scrolled { background: rgba(13,31,20,0.97); border-bottom: 0.5px solid var(--border); backdrop-filter: blur(10px); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; }
+.nav-logo em { font-style: italic; color: var(--gold-light); }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); text-decoration: none; opacity: 0.78; transition: opacity 0.2s, color 0.2s; }
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.lang-toggle { display: flex; border: 0.5px solid var(--border); }
+.lang-toggle button { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.38rem 0.7rem; background: transparent; border: none; color: var(--text-muted); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.lang-toggle button.active { background: var(--gold); color: var(--green-deep); }
+.nav-reserve { font-size: 0.66rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-deep); background: var(--gold); border: none; padding: 0.62rem 1.3rem; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+.nav-reserve:hover { background: var(--gold-light); }
+
+/* HERO */
+.hero { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 0 2rem; }
+.hero .bg-layer { background-image: url('images/hero.jpg'); }
+.hero .bg-overlay { background: linear-gradient(165deg, rgba(13,31,20,0.55) 0%, rgba(13,31,20,0.35) 45%, rgba(13,31,20,0.75) 100%), radial-gradient(ellipse 70% 60% at 50% 40%, transparent 0%, rgba(13,31,20,0.4) 100%); }
+.hero > *:not(.bg-layer):not(.bg-overlay) { position: relative; z-index: 2; }
+.hero-eyebrow { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; opacity: 0; animation: fadeUp 0.9s 0.3s forwards; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300; line-height: 1.05; letter-spacing: 0.04em; color: var(--ivory); opacity: 0; animation: fadeUp 0.9s 0.5s forwards; text-shadow: 0 4px 40px rgba(0,0,0,0.5); }
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero-subtitle { font-size: 0.72rem; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream); margin-top: 1.4rem; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; line-height: 2.2; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.hero-divider { width: 60px; height: 0.5px; background: var(--gold); margin: 2.5rem auto; opacity: 0; animation: fadeUp 0.9s 0.9s forwards; }
+.hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 0.9s 1.1s forwards; }
+.btn-primary { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-deep); background: var(--gold); border: none; padding: 1rem 2.4rem; cursor: pointer; text-decoration: none; transition: background 0.2s; display: inline-block; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); background: rgba(13,31,20,0.3); backdrop-filter: blur(4px); border: 0.5px solid var(--gold); padding: 1rem 2.4rem; cursor: pointer; text-decoration: none; transition: background 0.2s, color 0.2s; display: inline-block; }
+.btn-outline:hover { background: rgba(200,164,90,0.15); }
+.hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.6rem; opacity: 0; animation: fadeUp 0.9s 1.4s forwards; z-index: 2; }
+.hero-scroll span { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); }
+.scroll-line { width: 0.5px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2s infinite; }
+
+/* SECTIONS */
+section { padding: 8rem 4rem; position: relative; }
+.section-label { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 300; line-height: 1.15; color: var(--ivory); }
+.section-title em { font-style: italic; color: var(--gold-light); }
+.section-divider { width: 50px; height: 0.5px; background: var(--border); margin: 2rem 0; }
+.section-text { font-size: 0.95rem; font-weight: 300; line-height: 1.85; color: var(--text-muted); max-width: 520px; }
+
+/* ABOUT */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--green-deep); }
+.about-visual { position: relative; height: 580px; }
+.about-img-main, .about-img-sub { position: absolute; background-size: cover; background-position: center; border: 0.5px solid var(--border); }
+.about-img-main { inset: 0 4rem 4rem 0; background-image: url('images/team.jpg'); }
+.about-img-sub { width: 55%; height: 48%; bottom: 0; right: 0; background-image: url('images/greenwall.jpg'); border: 0.5px solid var(--gold); }
+.about-leaf { position: absolute; top: -1.5rem; left: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 7rem; color: rgba(200,164,90,0.3); line-height: 1; pointer-events: none; user-select: none; z-index: 2; }
+.about-badge { position: absolute; bottom: 2rem; left: 2rem; padding: 1.2rem 1.5rem; background: rgba(13,31,20,0.92); backdrop-filter: blur(8px); border-left: 2px solid var(--gold); z-index: 2; max-width: 280px; }
+.about-badge p { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--gold-light); line-height: 1.5; }
+.about-badge cite { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.8rem; display: block; font-style: normal; }
+
+/* VENUES */
+.venues { background: var(--green-mid); }
+.venues-header { text-align: center; margin-bottom: 5rem; }
+.venues-header .section-divider { margin: 2rem auto; }
+.venues-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; }
+.venue-card { position: relative; padding: 2.8rem 2rem; min-height: 360px; background: var(--green-deep); border: 0.5px solid var(--border); overflow: hidden; transition: border-color 0.3s; }
+.venue-img { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.32; transition: opacity 0.5s, transform 0.6s; z-index: 0; }
+.venue-card:hover .venue-img { opacity: 0.55; transform: scale(1.04); }
+.venue-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(13,31,20,0.55) 0%, rgba(13,31,20,0.92) 75%); z-index: 1; transition: background 0.3s; }
+.venue-card:hover::after { background: linear-gradient(to bottom, rgba(13,31,20,0.35) 0%, rgba(13,31,20,0.85) 75%); }
+.venue-card > *:not(.venue-img) { position: relative; z-index: 2; }
+.venue-card:hover { border-color: var(--gold); }
+.venue-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; z-index: 3; }
+.venue-card:hover::before { transform: scaleX(1); }
+.venue-card.games-card { border-color: rgba(200,164,90,0.4); }
+.venue-new { position: absolute; top: 1.2rem; right: 1rem; font-size: 0.52rem; letter-spacing: 0.2em; font-weight: 500; background: var(--gold); color: var(--green-deep); padding: 0.22rem 0.55rem; z-index: 3; }
+.venue-number { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 300; color: rgba(200,164,90,0.25); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+.venue-icon { font-size: 1.5rem; margin-bottom: 1.3rem; display: block; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4)); }
+.venue-name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 300; color: var(--ivory); margin-bottom: 0.3rem; }
+.venue-tag { font-size: 0.57rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: block; }
+.venue-desc { font-size: 0.83rem; font-weight: 300; line-height: 1.75; color: var(--cream); }
+
+/* GAMES */
+.games-section { background: var(--green-deep); position: relative; overflow: hidden; }
+.games-section > .bg-layer { background-image: url('images/games.jpg'); opacity: 0.12; filter: blur(3px); }
+.games-section > *:not(.bg-layer) { position: relative; z-index: 1; }
+.games-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+.games-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; margin-top: 2rem; }
+.game-feat { padding: 1.6rem; border: 0.5px solid var(--border); background: rgba(26,58,34,0.85); backdrop-filter: blur(4px); }
+.game-feat-icon { font-size: 1.3rem; margin-bottom: 0.7rem; display: block; }
+.game-feat-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); margin-bottom: 0.25rem; }
+.game-feat-desc { font-size: 0.78rem; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+.games-visual-wrap { position: relative; max-width: 480px; margin: 0 auto; }
+.games-photo { width: 100%; aspect-ratio: 3/4; background: url('images/games.jpg') center/cover no-repeat; border: 0.5px solid var(--border); position: relative; }
+.games-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,31,20,0.3), transparent 40%); }
+.games-tag { margin-top: 1.2rem; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); text-align: right; display: block; }
+
+/* MENU */
+.menu-section { background: var(--green-mid); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; position: relative; overflow: hidden; }
+.menu-list { list-style: none; margin-top: 2.5rem; }
+.menu-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 1.15rem 0; border-bottom: 0.5px solid var(--border); font-size: 0.9rem; font-weight: 300; }
+.menu-list li:first-child { border-top: 0.5px solid var(--border); }
+.menu-item-name { color: var(--cream); }
+.menu-item-desc { font-size: 0.74rem; color: var(--text-muted); margin-top: 0.22rem; display: block; }
+.menu-item-price { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); white-space: nowrap; margin-left: 1rem; }
+.menu-tabs { display: flex; flex-wrap: wrap; border: 0.5px solid var(--border); width: fit-content; margin-bottom: 2rem; }
+.menu-tab { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.17em; text-transform: uppercase; padding: 0.62rem 1.1rem; background: transparent; border: none; border-right: 0.5px solid var(--border); color: var(--text-muted); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.menu-tab:last-child { border-right: none; }
+.menu-tab.active { background: var(--gold); color: var(--green-deep); }
+.menu-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+.menu-photo { width: 100%; max-width: 460px; aspect-ratio: 3/4; background: url('images/menu_book.jpg') center/cover no-repeat; border: 0.5px solid var(--border); position: relative; }
+.menu-photo::after { content: attr(data-caption); position: absolute; bottom: 0; left: 0; right: 0; padding: 1.2rem; background: linear-gradient(to top, rgba(13,31,20,0.95), transparent); color: var(--gold-light); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; text-align: center; }
+
+/* EVENTS */
+.events { background: var(--green-deep); text-align: center; position: relative; overflow: hidden; }
+.events > .bg-layer { background-image: url('images/events.jpg'); opacity: 0.18; }
+.events > .bg-overlay { background: linear-gradient(to bottom, rgba(13,31,20,0.8), rgba(13,31,20,0.95)); }
+.events > *:not(.bg-layer):not(.bg-overlay) { position: relative; z-index: 2; }
+.events-inner { max-width: 780px; margin: 0 auto; }
+.events .section-divider { margin: 2rem auto; }
+.events-text { font-size: 0.95rem; font-weight: 300; line-height: 1.85; color: var(--text-muted); margin-bottom: 3.5rem; }
+.events-features { display: flex; justify-content: center; gap: 4rem; margin: 3rem 0 4rem; flex-wrap: wrap; }
+.event-feature-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); display: block; line-height: 1; }
+.event-feature-label { font-size: 0.67rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.5rem; display: block; }
+
+/* RESERVATIONS */
+.reservations { background: var(--green-mid); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; position: relative; overflow: hidden; }
+.reservations > .bg-layer { background-image: url('images/menu.jpg'); opacity: 0.08; }
+.reservations > *:not(.bg-layer) { position: relative; z-index: 1; }
+.res-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-label { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.form-input, .form-select { background: var(--green-deep); border: 0.5px solid var(--border); color: var(--cream); padding: 0.85rem 1rem; font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+.form-input:focus, .form-select:focus { border-color: var(--gold); }
+.form-input::placeholder { color: var(--text-muted); }
+.form-select option { background: var(--green-mid); }
+
+/* GALLERY */
+.gallery { background: var(--green-deep); padding: 6rem 0; }
+.gallery-header { text-align: center; padding: 0 4rem 4rem; }
+.gallery-header .section-divider { margin: 2rem auto; }
+.gallery-grid { display: grid; grid-template-columns: repeat(6,1fr); grid-template-rows: 220px 220px; gap: 2px; }
+.gallery-item { overflow: hidden; position: relative; cursor: pointer; }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(4) { grid-column: span 2; }
+.gallery-item:nth-child(6) { grid-column: span 2; }
+.gallery-item-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.7s ease; }
+.gallery-item:hover .gallery-item-bg { transform: scale(1.08); }
+.gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,31,20,0.85) 0%, rgba(13,31,20,0.3) 50%, transparent 100%); opacity: 0.5; transition: opacity 0.4s; }
+.gallery-item:hover .gallery-overlay { opacity: 0.85; }
+.gallery-label { position: absolute; bottom: 1.1rem; left: 1.3rem; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); z-index: 2; transition: transform 0.3s, color 0.3s; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+.gallery-item:hover .gallery-label { transform: translateY(-4px); color: var(--gold-light); }
+
+/* FOOTER */
+footer { background: #080f0a; padding: 5rem 4rem 3rem; border-top: 0.5px solid var(--border); position: relative; overflow: hidden; }
+footer::before { content: ''; position: absolute; inset: 0; background: url('images/sign_night.jpg') center/cover no-repeat; opacity: 0.05; z-index: 0; }
+footer > * { position: relative; z-index: 1; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+.footer-brand .nav-logo { font-size: 1.8rem; display: block; margin-bottom: 1rem; }
+.footer-brand p { font-size: 0.85rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; max-width: 280px; }
+.footer-col h4 { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-col ul li a { font-size: 0.85rem; font-weight: 300; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--cream); }
+.footer-col p { font-size: 0.85rem; font-weight: 300; color: var(--text-muted); line-height: 1.9; }
+.footer-bottom { border-top: 0.5px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-bottom p { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.08em; }
+.footer-socials { display: flex; gap: 1.5rem; }
+.footer-socials a { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.footer-socials a:hover { color: var(--gold); }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+@keyframes scrollPulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+.reveal { opacity:0; transform:translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:1100px){ .venues-grid{ grid-template-columns: repeat(2,1fr); } }
+@media(max-width:900px){
+  nav { padding:1.2rem 1.5rem; }
+  .nav-links { display:none; }
+  section { padding:5rem 1.5rem; }
+  .about, .menu-section, .reservations, .games-inner { grid-template-columns:1fr; gap:3rem; }
+  .about-visual { height:380px; }
+  .venues-grid { grid-template-columns:1fr; }
+  .gallery-grid { grid-template-columns:repeat(2,1fr); grid-template-rows:auto; }
+  .gallery-item:nth-child(1) { grid-column:span 2; height:220px; }
+  .gallery-item:nth-child(4),.gallery-item:nth-child(6) { grid-column:span 1; }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+  .menu-photo { max-width: 320px; }
+  .form-row { grid-template-columns:1fr; }
+  .events-features { gap:2rem; }
+  .games-features { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="lang-splash">
+  <div class="bg-layer"></div>
+  <div class="bg-overlay"></div>
+  <div class="splash-logo">Extra<em>Mile</em>Garden</div>
+  <div class="splash-sub">Abomey-Calavi · Bénin</div>
+  <div class="splash-line"></div>
+  <p class="splash-prompt">Please select your language &nbsp;·&nbsp; Veuillez choisir votre langue</p>
+  <div class="lang-btns">
+    <button class="lang-btn" onclick="setLang('en')"><span class="lang-flag">🇬🇧 ENGLISH</span>English</button>
+    <button class="lang-btn" onclick="setLang('fr')"><span class="lang-flag">🇫🇷 FRANÇAIS</span>Français</button>
+  </div>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">Extra<em>Mile</em>Garden</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.story">Our Story</a></li>
+    <li><a href="#venues" data-i18n="nav.venues">Venues</a></li>
+    <li><a href="#games" data-i18n="nav.games">House of Games</a></li>
+    <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+    <li><a href="#events" data-i18n="nav.events">Events</a></li>
+    <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-fr" onclick="setLang('fr')">FR</button>
+    </div>
+    <button class="nav-reserve" data-i18n="nav.reserve" onclick="document.getElementById('reservations').scrollIntoView({behavior:'smooth'})">Reserve a Table</button>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="bg-layer"></div>
+  <div class="bg-overlay"></div>
+  <p class="hero-eyebrow" data-i18n="hero.eyebrow">Restaurant · Bar · Pizzeria · Events</p>
+  <h1>Extra<em>Mile</em><br>Garden</h1>
+  <p class="hero-subtitle" data-i18n="hero.subtitle">Pizzeria &nbsp;·&nbsp; Grill &nbsp;·&nbsp; Bar &amp; Café &nbsp;·&nbsp; African &amp; European Cuisine<br>House of Games &nbsp;·&nbsp; Event Halls &amp; Conferences</p>
+  <div class="hero-divider"></div>
+  <div class="hero-cta">
+    <a href="#reservations" class="btn-primary" data-i18n="hero.cta1">Reserve a Table</a>
+    <a href="#venues" class="btn-outline" data-i18n="hero.cta2">Explore Venues</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span data-i18n="hero.scroll">Scroll</span>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-leaf">✦</div>
+    <div class="about-img-main"></div>
+    <div class="about-img-sub"></div>
+    <div class="about-badge">
+      <p data-i18n="about.quote">"Where every mile of flavour takes you somewhere extraordinary."</p>
+      <cite data-i18n="about.cite">— The Extramile Garden Philosophy</cite>
+    </div>
+  </div>
+  <div class="reveal" style="transition-delay:0.15s;">
+    <span class="section-label" data-i18n="about.label">Our Story</span>
+    <h2 class="section-title" data-i18n="about.title">Where Flavour <em>Knows No<br>Boundaries</em></h2>
+    <div class="section-divider"></div>
+    <p class="section-text" data-i18n="about.p1">Loading…</p>
+    <p class="section-text" style="margin-top:1.2rem;" data-i18n="about.p2">Loading…</p>
+    <a href="#menu" class="btn-outline" style="margin-top:2.5rem;display:inline-block;" data-i18n="about.cta">Explore Our Menus</a>
+  </div>
+</section>
+
+<section class="venues" id="venues">
+  <div class="venues-header reveal">
+    <span class="section-label" data-i18n="venues.label">Our Spaces</span>
+    <h2 class="section-title" data-i18n="venues.title">Seven <em>Distinct</em> Experiences</h2>
+    <div class="section-divider"></div>
+    <p class="section-text" style="margin:0 auto;text-align:center;" data-i18n="venues.intro">Loading…</p>
+  </div>
+  <div class="venues-grid">
+    <div class="venue-card reveal">
+      <div class="venue-img" style="background-image:url('images/pizzeria.jpg');"></div>
+      <span class="venue-number">01</span><span class="venue-icon">🍕</span>
+      <h3 class="venue-name" data-i18n="v1.name">The Pizzeria</h3>
+      <span class="venue-tag" data-i18n="v1.tag">Wood-Fired Artisan Pizza</span>
+      <p class="venue-desc" data-i18n="v1.desc">Loading…</p>
+    </div>
+    <div class="venue-card reveal" style="transition-delay:0.08s;">
+      <div class="venue-img" style="background-image:url('images/grill.jpg');"></div>
+      <span class="venue-number">02</span><span class="venue-icon">🔥</span>
+      <h3 class="venue-name" data-i18n="v2.name">The Grill</h3>
+      <span class="venue-tag" data-i18n="v2.tag">Fresh Cuts &amp; Open Flame</span>
+      <p class="venue-desc" data-i18n="v2.desc">Loading…</p>
+    </div>
+    <div class="venue-card reveal" style="transition-delay:0.16s;">
+      <div class="venue-img" style="background-image:url('images/bar.jpg');"></div>
+      <span class="venue-number">03</span><span class="venue-icon">🍸</span>
+      <h3 class="venue-name" data-i18n="v3.name">Bar &amp; Café</h3>
+      <span class="venue-tag" data-i18n="v3.tag">Cocktails, Coffee &amp; Refreshments</span>
+      <p class="venue-desc" data-i18n="v3.desc">Loading…</p>
+    </div>
+    <div class="venue-card reveal" style="transition-delay:0.24s;">
+      <div class="venue-img" style="background-image:url('images/african.jpg');"></div>
+      <span class="venue-number">04</span><span class="venue-icon">🌍</span>
+      <h3 class="venue-name" data-i18n="v4.name">African Cuisine</h3>
+      <span class="venue-tag" data-i18n="v4.tag">Heritage &amp; Bold Tradition</span>
+      <p class="venue-desc" data-i18n="v4.desc">Loading…</p>
+    </div>
+    <div class="venue-card reveal" style="transition-delay:0.32s;">
+      <div class="venue-img" style="background-image:url('images/european.jpg');"></div>
+      <span class="venue-number">05</span><span class="venue-icon">🥂</span>
+      <h3 class="venue-name" data-i18n="v5.name">European Cuisine</h3>
+      <span class="venue-tag" data-i18n="v5.tag">Classic Elegance &amp; Refinement</span>
+      <p class="venue-desc" data-i18n="v5.desc">Loading…</p>
+    </div>
+    <div class="venue-card games-card reveal" style="transition-delay:0.40s;">
+      <div class="venue-img" style="background-image:url('images/games.jpg');"></div>
+      <span class="venue-new" data-i18n="venue.new">NEW</span>
+      <span class="venue-number">06</span><span class="venue-icon">🎮</span>
+      <h3 class="venue-name" data-i18n="v6.name">House of Games</h3>
+      <span class="venue-tag" data-i18n="v6.tag">Play, Compete &amp; Celebrate</span>
+      <p class="venue-desc" data-i18n="v6.desc">Loading…</p>
+    </div>
+    <div class="venue-card reveal" style="transition-delay:0.48s;">
+      <div class="venue-img" style="background-image:url('images/events.jpg');"></div>
+      <span class="venue-number">07</span><span class="venue-icon">✨</span>
+      <h3 class="venue-name" data-i18n="v7.name">Event Halls</h3>
+      <span class="venue-tag" data-i18n="v7.tag">Conferences &amp; Celebrations</span>
+      <p class="venue-desc" data-i18n="v7.desc">Loading…</p>
+    </div>
+  </div>
+</section>
+
+<section class="games-section" id="games">
+  <div class="bg-layer"></div>
+  <div class="games-inner">
+    <div class="reveal">
+      <span class="section-label" data-i18n="games.label">Extramile House of Games</span>
+      <h2 class="section-title" data-i18n="games.title">Where Play Meets <em>Luxury</em></h2>
+      <div class="section-divider"></div>
+      <p class="section-text" data-i18n="games.p1">Loading…</p>
+      <p class="section-text" style="margin-top:1.2rem;" data-i18n="games.p2">Loading…</p>
+      <div class="games-features">
+        <div class="game-feat">
+          <span class="game-feat-icon">🎮</span>
+          <div class="game-feat-name" data-i18n="gf1.name">Console Gaming</div>
+          <div class="game-feat-desc" data-i18n="gf1.desc">PlayStation 5 stations with a wide library of top titles</div>
+        </div>
+        <div class="game-feat">
+          <span class="game-feat-icon">🏎</span>
+          <div class="game-feat-name" data-i18n="gf2.name">Racing Simulators</div>
+          <div class="game-feat-desc" data-i18n="gf2.desc">Logitech G923 racing wheels with realistic pedal sets</div>
+        </div>
+        <div class="game-feat">
+          <span class="game-feat-icon">⚽</span>
+          <div class="game-feat-name" data-i18n="gf3.name">Sports &amp; Football</div>
+          <div class="game-feat-desc" data-i18n="gf3.desc">Premier League matches and FIFA tournaments on big screens</div>
+        </div>
+        <div class="game-feat">
+          <span class="game-feat-icon">♟</span>
+          <div class="game-feat-name" data-i18n="gf4.name">Private Gaming Booths</div>
+          <div class="game-feat-desc" data-i18n="gf4.desc">Exclusive bookings for groups, birthdays, and celebrations</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.2s;">
+      <div class="games-visual-wrap">
+        <div class="games-photo"></div>
+        <span class="games-tag" data-i18n="games.boardtag">Open Daily · Kwabo · Bienvenue · Welcome</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="reveal">
+    <span class="section-label" data-i18n="menu.label">Signatures</span>
+    <h2 class="section-title" data-i18n="menu.title">Crafted with<br><em>Precision &amp; Soul</em></h2>
+    <div class="section-divider"></div>
+    <div class="menu-tabs">
+      <button class="menu-tab active" onclick="switchMenu(this,'grill')" data-i18n="tab.grill">Grill</button>
+      <button class="menu-tab" onclick="switchMenu(this,'african')" data-i18n="tab.african">African</button>
+      <button class="menu-tab" onclick="switchMenu(this,'pizza')" data-i18n="tab.pizza">Pizzeria</button>
+      <button class="menu-tab" onclick="switchMenu(this,'european')" data-i18n="tab.european">European</button>
+      <button class="menu-tab" onclick="switchMenu(this,'bar')" data-i18n="tab.bar">Bar</button>
+    </div>
+    <ul class="menu-list" id="menu-list"></ul>
+    <a href="#reservations" class="btn-outline" style="margin-top:2.5rem;display:inline-block;" data-i18n="menu.cta">View Full Menu</a>
+  </div>
+  <div class="menu-visual reveal" style="transition-delay:0.2s;">
+    <div class="menu-photo" id="menu-photo" data-caption="Le Menu"></div>
+  </div>
+</section>
+
+<section class="events" id="events">
+  <div class="bg-layer"></div>
+  <div class="bg-overlay"></div>
+  <div class="events-inner reveal">
+    <span class="section-label" data-i18n="events.label">Event Halls &amp; Conferences</span>
+    <h2 class="section-title" data-i18n="events.title">Celebrate in <em>Extraordinary</em> Style</h2>
+    <div class="section-divider"></div>
+    <p class="events-text" data-i18n="events.text">Loading…</p>
+    <div class="events-features">
+      <div class="event-feature"><span class="event-feature-num">500+</span><span class="event-feature-label" data-i18n="ef1">Guest Capacity</span></div>
+      <div class="event-feature"><span class="event-feature-num">7</span><span class="event-feature-label" data-i18n="ef2">Distinct Venues</span></div>
+      <div class="event-feature"><span class="event-feature-num">12+</span><span class="event-feature-label" data-i18n="ef3">Event Configurations</span></div>
+      <div class="event-feature"><span class="event-feature-num">100%</span><span class="event-feature-label" data-i18n="ef4">Bespoke Service</span></div>
+    </div>
+    <a href="#reservations" class="btn-primary" data-i18n="events.cta">Enquire About Events</a>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="gallery-header reveal">
+    <span class="section-label" data-i18n="gallery.label">Gallery</span>
+    <h2 class="section-title" data-i18n="gallery.title">A Feast for <em>the Eyes</em></h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery1.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl1">The Garden Terrace</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery2.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl2">Bamboo Dining</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery3.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl3">Night Ambience</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery4.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl4">Event Stage</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery5.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl5">Main Courtyard</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery6.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl6">Bar &amp; Mixology</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery7.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl7">Conference Room</span></div>
+  </div>
+</section>
+
+<section class="reservations" id="reservations">
+  <div class="bg-layer"></div>
+  <div class="reveal">
+    <span class="section-label" data-i18n="res.label">Reservations</span>
+    <h2 class="section-title" data-i18n="res.title">Reserve Your <em>Table</em></h2>
+    <div class="section-divider"></div>
+    <p class="section-text" data-i18n="res.p1">Loading…</p>
+    <p class="section-text" style="margin-top:1.5rem;" data-i18n="res.p2">Loading…</p>
+    <p class="section-text" style="margin-top:2rem;font-size:0.85rem;line-height:2;">
+      <span style="color:var(--gold);">📞</span>&nbsp; +229 01 96 72 78 75<br>
+      <span style="color:var(--gold);">📞</span>&nbsp; +229 01 51 51 22 77<br>
+      <span style="color:var(--gold);">✉</span>&nbsp; extramile.business.group@gmail.com<br>
+      <span style="color:var(--gold);">📍</span>&nbsp; <span data-i18n="res.address">Abomey-Calavi, Zopah, C/229 (Y-Z)<br>&nbsp;&nbsp;&nbsp;&nbsp; 01 BP 5754 Cotonou, Bénin</span>
+    </p>
+  </div>
+  <div class="reveal" style="transition-delay:0.2s;">
+    <form class="res-form" onsubmit="handleReservation(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.fname">First Name</label>
+          <input type="text" class="form-input" placeholder="Kofi">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.lname">Last Name</label>
+          <input type="text" class="form-input" placeholder="Agbodjan">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form.email">Email Address</label>
+        <input type="email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.date">Date</label>
+          <input type="date" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.time">Time</label>
+          <select class="form-select">
+            <option>12:00</option><option>13:00</option><option>14:00</option>
+            <option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.guests">Guests</label>
+          <select class="form-select" id="sel-guests"></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.venue">Venue Preference</label>
+          <select class="form-select" id="sel-venue"></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form.special">Special Requests</label>
+        <input type="text" class="form-input" id="inp-special" placeholder="Dietary requirements, occasion, seating preference…">
+      </div>
+      <button type="submit" class="btn-primary" id="res-btn" data-i18n="form.submit" style="width:100%;margin-top:0.5rem;padding:1.1rem;font-size:0.72rem;letter-spacing:0.22em;">Confirm Reservation</button>
+    </form>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand reveal">
+      <a href="#" class="nav-logo">Extra<em>Mile</em>Garden</a>
+      <p data-i18n="footer.brand">Loading…</p>
+    </div>
+    <div class="footer-col reveal" style="transition-delay:0.1s;">
+      <h4 data-i18n="footer.explore">Explore</h4>
+      <ul>
+        <li><a href="#about" data-i18n="nav.story">Our Story</a></li>
+        <li><a href="#venues" data-i18n="nav.venues">Venues</a></li>
+        <li><a href="#games" data-i18n="nav.games">House of Games</a></li>
+        <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+        <li><a href="#events" data-i18n="nav.events">Events</a></li>
+        <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-col reveal" style="transition-delay:0.2s;">
+      <h4 data-i18n="footer.hours">Opening Hours</h4>
+      <p data-i18n="footer.weekday">Monday – Friday<br>12:00 – 23:00</p>
+      <p style="margin-top:0.8rem;" data-i18n="footer.weekend">Saturday – Sunday<br>11:00 – 00:00</p>
+      <p style="margin-top:0.8rem;" data-i18n="footer.games_hours">House of Games<br>Daily · From 16:00</p>
+    </div>
+    <div class="footer-col reveal" style="transition-delay:0.3s;">
+      <h4 data-i18n="footer.findus">Find Us</h4>
+      <p>Extramile Garden<br>Abomey-Calavi, Zopah<br>C/229 (Y-Z), Bénin</p>
+      <p style="margin-top:0.8rem;">extramile.business.group@gmail.com</p>
+      <p style="margin-top:0.8rem;">+229 01 96 72 78 75<br>+229 01 51 51 22 77</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="footer.copy">© 2025 Extramile Garden. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="#">Instagram</a><a href="#">Facebook</a><a href="#">WhatsApp</a><a href="#">Google Maps</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const T = {
+  en: {
+    'nav.story':'Our Story','nav.venues':'Venues','nav.games':'House of Games','nav.menu':'Menu','nav.events':'Events','nav.gallery':'Gallery','nav.contact':'Contact','nav.reserve':'Reserve a Table',
+    'hero.eyebrow':'Restaurant · Bar · Pizzeria · Events',
+    'hero.subtitle':'Pizzeria · Grill · Bar & Café · African & European Cuisine<br>House of Games · Event Halls & Conferences',
+    'hero.cta1':'Reserve a Table','hero.cta2':'Explore Venues','hero.scroll':'Scroll',
+    'about.label':'Our Story','about.title':'Where Flavour <em>Knows No<br>Boundaries</em>',
+    'about.quote':'"Where every mile of flavour takes you somewhere extraordinary."','about.cite':'— The Extramile Garden Philosophy',
+    'about.p1':"Nestled in the heart of Abomey-Calavi, Bénin, Extramile Garden is a destination like no other. Born from a passion for bringing the world's finest culinary traditions together under one roof, we have created a space where wood-fired pizza, perfectly grilled cuts of meat, hand-crafted cocktails, and the bold heritage of African and European cuisine all find their rightful place.",
+    'about.p2':'Set within a beautifully curated garden environment — and home to our vibrant House of Games, event halls, and conference spaces — every detail is an invitation to go further, taste deeper, and experience more.',
+    'about.cta':'Explore Our Menus',
+    'venues.label':'Our Spaces','venues.title':'Seven <em>Distinct</em> Experiences',
+    'venues.intro':'Each venue within Extramile Garden has its own soul, its own menu, and its own atmosphere — united by one unwavering commitment to excellence.',
+    'venue.new':'NEW',
+    'v1.name':'The Pizzeria','v1.tag':'Wood-Fired Artisan Pizza','v1.desc':'Authentic pizzas hand-crafted by our in-house chef with fresh dough, generous toppings, and fired to perfection for an unforgettable bite.',
+    'v2.name':'The Grill','v2.tag':'Fresh Cuts & Open Flame','v2.desc':'From succulent grilled meats to marinated fish, our grill celebrates the primal art of fire — paired with house-made sauces and fresh garden sides.',
+    'v3.name':'Bar & Café','v3.tag':'Cocktails, Coffee & Refreshments','v3.desc':'A sanctuary for the unhurried. Sip hand-crafted cocktails, fresh juices, specialty coffee, and artisan teas in a relaxed garden-side setting.',
+    'v4.name':'African Cuisine','v4.tag':'Heritage & Bold Tradition','v4.desc':"A celebration of Africa's rich and diverse culinary heritage — from the aromatic spice blends of West Africa to the slow-cooked stews of the continent.",
+    'v5.name':'European Cuisine','v5.tag':'Classic Elegance & Refinement','v5.desc':'Continental classics with a contemporary sensibility — from bistro staples to rustic Italian favourites, curated for the discerning palate.',
+    'v6.name':'House of Games','v6.tag':'Play, Compete & Celebrate','v6.desc':'An electrifying entertainment hub featuring console gaming, racing simulators, sports viewing, board games, and private gaming booths — all with bespoke service.',
+    'v7.name':'Event Halls','v7.tag':'Conferences & Celebrations','v7.desc':'Elegant event halls and conference rooms for weddings, corporate meetings, seminars, birthdays, and private dining experiences — tailored to every occasion.',
+    'games.label':'Extramile House of Games','games.title':'Where Play Meets <em>Luxury</em>',
+    'games.p1':'The Extramile House of Games is a world-class entertainment experience wrapped in refined elegance. Whether you are winding down after dinner or planning a competitive evening with friends, our games lounge delivers unmatched excitement and style — greeted with a warm "Kwabo · Bienvenue · Welcome".',
+    'games.p2':'Each game zone is designed for both casual guests and serious players. Private gaming booths are available for exclusive bookings, and our dedicated games bar ensures you are never far from a perfectly crafted drink.',
+    'games.boardtag':'Open Daily · Kwabo · Bienvenue · Welcome',
+    'gf1.name':'Console Gaming','gf1.desc':'PlayStation 5 stations with a wide library of top titles',
+    'gf2.name':'Racing Simulators','gf2.desc':'Logitech G923 racing wheels with realistic pedal sets',
+    'gf3.name':'Sports & Football','gf3.desc':'Premier League matches and FIFA tournaments on big screens',
+    'gf4.name':'Private Gaming Booths','gf4.desc':'Exclusive bookings for groups, birthdays, and celebrations',
+    'menu.label':'Signatures','menu.title':'Crafted with<br><em>Precision & Soul</em>','menu.cta':'View Full Menu','menu.caption':'Le Menu',
+    'tab.grill':'Grill','tab.african':'African','tab.pizza':'Pizzeria','tab.european':'European','tab.bar':'Bar',
+    'events.label':'Event Halls & Conferences','events.title':'Celebrate in <em>Extraordinary</em> Style',
+    'events.text':'Our dedicated event halls and conference rooms are the perfect setting for weddings, corporate meetings, seminars, birthday celebrations, product launches, and private dining experiences. With a team of dedicated event specialists, bespoke menus across all our offerings, and the added excitement of the House of Games, Extramile Garden transforms any occasion into an enduring memory.',
+    'events.cta':'Enquire About Events',
+    'ef1':'Guest Capacity','ef2':'Distinct Venues','ef3':'Event Configurations','ef4':'Bespoke Service',
+    'gallery.label':'Gallery','gallery.title':'A Feast for <em>the Eyes</em>',
+    'gl1':'The Garden Terrace','gl2':'Bamboo Dining','gl3':'Night Ambience','gl4':'Event Stage','gl5':'Main Courtyard','gl6':'Bar & Mixology','gl7':'Conference Room',
+    'res.label':'Reservations','res.title':'Reserve Your <em>Table</em>',
+    'res.p1':'We invite you to join us for an experience that goes well beyond a meal. Kindly complete the form and our team will confirm your reservation within 24 hours.',
+    'res.p2':'For same-day reservations or large groups, please call us directly or send a WhatsApp message.',
+    'res.address':'Abomey-Calavi, Zopah, C/229 (Y-Z)<br>&nbsp;&nbsp;&nbsp;&nbsp; 01 BP 5754 Cotonou, Bénin',
+    'form.fname':'First Name','form.lname':'Last Name','form.email':'Email Address','form.date':'Date','form.time':'Time','form.guests':'Guests','form.venue':'Venue Preference',
+    'form.special':'Special Requests','form.specialph':'Dietary requirements, occasion, seating preference…',
+    'form.submit':'Confirm Reservation','form.success':'✓ Reservation Received — We will confirm within 24 hours',
+    'guests':['1 Guest','2 Guests','3 Guests','4 Guests','5–8 Guests','9–15 Guests','16+ Guests (Private Event)'],
+    'venues_opts':['Pizzeria','The Grill','Bar & Café','African Cuisine','European Cuisine','House of Games','Event Hall','No Preference'],
+    'footer.brand':"Abomey-Calavi's premier destination where extraordinary cuisine, warm hospitality, world-class games, and a beautifully curated garden setting create experiences that linger long after the last course.",
+    'footer.explore':'Explore','footer.hours':'Opening Hours','footer.findus':'Find Us',
+    'footer.weekday':'Monday – Friday<br>12:00 – 23:00','footer.weekend':'Saturday – Sunday<br>11:00 – 00:00','footer.games_hours':'House of Games<br>Daily · From 16:00',
+    'footer.copy':'© 2025 Extramile Garden. All rights reserved.',
+  },
+  fr: {
+    'nav.story':'Notre Histoire','nav.venues':'Espaces','nav.games':'Maison des Jeux','nav.menu':'Menu','nav.events':'Événements','nav.gallery':'Galerie','nav.contact':'Contact','nav.reserve':'Réserver une Table',
+    'hero.eyebrow':'Restaurant · Bar · Pizzeria · Événements',
+    'hero.subtitle':'Pizzeria · Grill · Bar & Café · Cuisines Africaine & Européenne<br>Maison des Jeux · Salles de Fêtes & Conférences',
+    'hero.cta1':'Réserver une Table','hero.cta2':'Découvrir nos Espaces','hero.scroll':'Défiler',
+    'about.label':'Notre Histoire','about.title':'Là Où la Saveur <em>Ne Connaît<br>Aucune Limite</em>',
+    'about.quote':"\"Chaque kilomètre de saveur vous emmène quelque part d'extraordinaire.\"",'about.cite':'— La Philosophie Extramile Garden',
+    'about.p1':"Niché au cœur d'Abomey-Calavi, au Bénin, Extramile Garden est une destination pas comme les autres. Né d'une passion pour réunir les plus belles traditions culinaires du monde sous un même toit, nous avons créé un espace où la pizza au feu de bois, les viandes parfaitement grillées, les cocktails élaborés avec soin et l'héritage audacieux des cuisines africaine et européenne trouvent leur juste place.",
+    'about.p2':"Installé dans un cadre de jardin admirablement soigné — et abritant notre vibrante Maison des Jeux, nos salles de fêtes et espaces de conférence — chaque détail est une invitation à aller plus loin, savourer plus profondément et vivre davantage.",
+    'about.cta':'Découvrir nos Menus',
+    'venues.label':'Nos Espaces','venues.title':'Sept <em>Expériences Uniques</em>',
+    'venues.intro':"Chaque espace d'Extramile Garden possède son âme, son menu et son atmosphère propres — unis par un engagement inébranlable envers l'excellence.",
+    'venue.new':'NOUVEAU',
+    'v1.name':'La Pizzeria','v1.tag':'Pizza Artisanale au Feu de Bois','v1.desc':"Des pizzas authentiques confectionnées par notre chef maison avec une pâte fraîche, des garnitures généreuses, cuites à la perfection pour une dégustation inoubliable.",
+    'v2.name':'Le Grill','v2.tag':'Viandes Fraîches & Flammes Vives','v2.desc':"Des viandes grillées aux poissons marinés, notre grill célèbre l'art primitif du feu — accompagné de sauces maison et de garnitures fraîches du jardin.",
+    'v3.name':'Bar & Café','v3.tag':'Cocktails, Café & Rafraîchissements','v3.desc':"Un sanctuaire pour les esprits libres. Dégustez des cocktails artisanaux, des jus frais, des cafés de spécialité et des thés raffinés en bord de jardin.",
+    'v4.name':'Cuisine Africaine','v4.tag':'Patrimoine & Tradition Audacieuse','v4.desc':"Une célébration du riche patrimoine culinaire africain — des mélanges d'épices aromatiques d'Afrique de l'Ouest aux ragoûts mijotés du continent.",
+    'v5.name':'Cuisine Européenne','v5.tag':'Élégance Classique & Raffinement','v5.desc':"Des classiques continentaux avec une sensibilité contemporaine — des incontournables du bistrot aux favoris rustiques italiens, sélectionnés pour les palais exigeants.",
+    'v6.name':'Maison des Jeux','v6.tag':'Jouer, Concourir & Célébrer','v6.desc':"Un espace de divertissement électrisant : jeux sur console, simulateurs de course, retransmissions sportives, jeux de société et salons de jeux privés — avec un service sur mesure.",
+    'v7.name':'Salles de Fêtes','v7.tag':'Conférences & Célébrations','v7.desc':"Des salles élégantes pour mariages, réunions d'entreprise, séminaires, anniversaires et dîners privés — adaptées à chaque occasion.",
+    'games.label':'Extramile Maison des Jeux','games.title':'Là Où le Jeu Rencontre le <em>Luxe</em>',
+    'games.p1':"La Maison des Jeux Extramile offre une expérience de divertissement de classe mondiale, enveloppée dans une élégance raffinée. Que vous vous détendiez après le dîner ou planifiez une soirée compétitive entre amis, notre salon de jeux offre une excitation et un style inégalés — accueilli par un chaleureux « Kwabo · Bienvenue · Welcome ».",
+    'games.p2':"Chaque zone de jeu est conçue pour les clients décontractés comme pour les joueurs sérieux. Des salons privés sont disponibles à la réservation exclusive, et notre bar dédié veille à ce que vous ne soyez jamais loin d'un cocktail parfaitement élaboré.",
+    'games.boardtag':'Ouvert tous les jours · Kwabo · Bienvenue · Welcome',
+    'gf1.name':'Jeux sur Console','gf1.desc':'Stations PlayStation 5 avec une large bibliothèque de titres',
+    'gf2.name':'Simulateurs de Course','gf2.desc':'Volants Logitech G923 avec pédaliers réalistes',
+    'gf3.name':'Sports & Football','gf3.desc':'Matches de Premier League et tournois FIFA sur grand écran',
+    'gf4.name':'Salons de Jeux Privés','gf4.desc':'Réservations exclusives pour groupes, anniversaires et célébrations',
+    'menu.label':'Spécialités','menu.title':'Élaboré avec<br><em>Précision & Âme</em>','menu.cta':'Voir le Menu Complet','menu.caption':'Le Menu',
+    'tab.grill':'Grill','tab.african':'Africain','tab.pizza':'Pizzeria','tab.european':'Européen','tab.bar':'Bar',
+    'events.label':'Salles de Fêtes & Conférences','events.title':'Célébrez dans un Style <em>Extraordinaire</em>',
+    'events.text':"Nos salles de fêtes et de conférence dédiées sont le cadre idéal pour les mariages, réunions d'entreprise, séminaires, anniversaires, lancements de produits et dîners privés. Grâce à une équipe de spécialistes, des menus sur mesure dans chacun de nos espaces et l'attrait supplémentaire de la Maison des Jeux, Extramile Garden transforme chaque occasion en souvenir impérissable.",
+    'events.cta':'Renseignements sur les Événements',
+    'ef1':"Capacité d'Accueil",'ef2':'Espaces Distincts','ef3':"Configurations d'Événements",'ef4':'Service Sur Mesure',
+    'gallery.label':'Galerie','gallery.title':'Un Festin pour <em>les Yeux</em>',
+    'gl1':'La Terrasse Jardin','gl2':'Dîner en Bambou','gl3':'Ambiance Nocturne','gl4':'Scène Événementielle','gl5':'Cour Principale','gl6':'Bar & Mixologie','gl7':'Salle de Conférence',
+    'res.label':'Réservations','res.title':'Réserver Votre <em>Table</em>',
+    'res.p1':"Nous vous invitons à nous rejoindre pour une expérience qui va bien au-delà d'un repas. Veuillez remplir le formulaire et notre équipe confirmera votre réservation dans les 24 heures.",
+    'res.p2':'Pour les réservations le jour même ou les grands groupes, veuillez nous appeler directement ou nous envoyer un message WhatsApp.',
+    'res.address':'Abomey-Calavi, Zopah, C/229 (Y-Z)<br>&nbsp;&nbsp;&nbsp;&nbsp; 01 BP 5754 Cotonou, Bénin',
+    'form.fname':'Prénom','form.lname':'Nom de famille','form.email':'Adresse e-mail','form.date':'Date','form.time':'Heure','form.guests':'Convives','form.venue':'Espace souhaité',
+    'form.special':'Demandes spéciales','form.specialph':'Régimes alimentaires, occasion, préférence de place…',
+    'form.submit':'Confirmer la Réservation','form.success':'✓ Réservation reçue — Nous confirmerons dans les 24 heures',
+    'guests':['1 Convive','2 Convives','3 Convives','4 Convives','5 à 8 Convives','9 à 15 Convives','16+ Convives (Événement privé)'],
+    'venues_opts':['Pizzeria','Le Grill','Bar & Café','Cuisine Africaine','Cuisine Européenne','Maison des Jeux','Salle de Fêtes','Aucune préférence'],
+    'footer.brand':"La destination phare d'Abomey-Calavi où cuisine extraordinaire, hospitalité chaleureuse, jeux de classe mondiale et un magnifique jardin se rejoignent pour créer des expériences qui demeurent bien après le dernier plat.",
+    'footer.explore':'Explorer','footer.hours':"Horaires d'Ouverture",'footer.findus':'Nous Trouver',
+    'footer.weekday':'Lundi – Vendredi<br>12h00 – 23h00','footer.weekend':'Samedi – Dimanche<br>11h00 – 00h00','footer.games_hours':'Maison des Jeux<br>Tous les jours · Dès 16h00',
+    'footer.copy':'© 2025 Extramile Garden. Tous droits réservés.',
+  }
+};
+
+const menuData = {
+  en: {
+    grill:[{name:'Grilled Beef Brochettes',desc:'Marinated beef skewers, grilled vegetables, signature sauce',price:'XOF 5 500'},{name:'Whole Grilled Fish',desc:'Fresh tilapia or dorade, lemon butter, herbs, plantain',price:'XOF 7 500'},{name:'Grilled Lamb Chops',desc:'Rosemary marinade, ratatouille, red wine jus',price:'XOF 9 500'},{name:'Chicken Grill Royale',desc:'Marinated free-range chicken, smoked mash, garden greens',price:'XOF 6 000'}],
+    african:[{name:'Chicken Shawarma Royale',desc:'Grilled marinated chicken, fresh salad, creamy sauce',price:'XOF 4 500'},{name:'Jollof Rice Deluxe',desc:'Slow-smoked long-grain rice, vegetables, fried plantain',price:'XOF 4 000'},{name:'Peanut Stew & Rice',desc:'Slow-cooked West African peanut sauce, choice of meat',price:'XOF 5 000'},{name:'Attiéké & Grilled Fish',desc:'Cassava couscous, fresh grilled fish, spicy tomato sauce',price:'XOF 5 500'}],
+    pizza:[{name:'Pizza Margherita',desc:'Tomato sauce, fresh mozzarella, basil, olive oil',price:'XOF 4 000'},{name:'Pizza Extramile',desc:'House special: tuna, corn, olives, peppers, cheese',price:'XOF 5 500'},{name:'Pizza Diavola',desc:'Spicy salami, chilli, mozzarella, oregano',price:'XOF 5 000'},{name:'Pizza 4 Fromages',desc:'Mozzarella, parmesan, gorgonzola, goat cheese',price:'XOF 5 500'}],
+    european:[{name:'Spaghetti Bolognese',desc:'Slow-cooked beef ragù, parmesan, fresh basil',price:'XOF 4 500'},{name:'Chicken Cordon Bleu',desc:'Breaded chicken, ham, cheese, creamy mushroom sauce',price:'XOF 6 000'},{name:'Beef Steak Poivre',desc:'Premium beef, peppercorn sauce, French fries, salad',price:'XOF 8 500'},{name:'Lasagne al Forno',desc:'Layers of pasta, beef ragù, béchamel, parmesan',price:'XOF 5 500'}],
+    bar:[{name:'Garden Mile',desc:'Gin, cucumber, elderflower, fresh tonic',price:'XOF 3 500'},{name:'Kente Sour',desc:'Rum, passion fruit, hibiscus, fresh lime foam',price:'XOF 3 000'},{name:'Blue Lagoon',desc:'Vodka, blue curaçao, lemon, pineapple garnish',price:'XOF 3 200'},{name:'Fresh Juice Trio',desc:'Mango, pineapple, or hibiscus (bissap) — freshly pressed',price:'XOF 2 000'}],
+  },
+  fr: {
+    grill:[{name:'Brochettes de Bœuf Grillées',desc:'Brochettes de bœuf mariné, légumes grillés, sauce maison',price:'XOF 5 500'},{name:'Poisson Entier Grillé',desc:'Tilapia ou dorade frais, beurre citronné, herbes, banane plantain',price:'XOF 7 500'},{name:"Côtelettes d'Agneau Grillées",desc:'Marinade au romarin, ratatouille, jus de vin rouge',price:'XOF 9 500'},{name:'Poulet Grill Royale',desc:'Poulet fermier mariné, écrasé fumé, légumes du jardin',price:'XOF 6 000'}],
+    african:[{name:'Shawarma de Poulet Royale',desc:'Poulet grillé mariné, salade fraîche, sauce crémeuse',price:'XOF 4 500'},{name:'Jollof Rice Deluxe',desc:'Riz long grain fumé lentement, légumes, banane plantain',price:'XOF 4 000'},{name:"Sauce d'Arachide & Riz",desc:"Sauce d'arachide mijotée d'Afrique de l'Ouest, choix de viande",price:'XOF 5 000'},{name:'Attiéké & Poisson Grillé',desc:'Semoule de manioc, poisson grillé frais, sauce tomate épicée',price:'XOF 5 500'}],
+    pizza:[{name:'Pizza Margherita',desc:"Sauce tomate, mozzarella fraîche, basilic, huile d'olive",price:'XOF 4 000'},{name:'Pizza Extramile',desc:'Spéciale maison : thon, maïs, olives, poivrons, fromage',price:'XOF 5 500'},{name:'Pizza Diavola',desc:'Salami piquant, piment, mozzarella, origan',price:'XOF 5 000'},{name:'Pizza 4 Fromages',desc:'Mozzarella, parmesan, gorgonzola, chèvre',price:'XOF 5 500'}],
+    european:[{name:'Spaghetti Bolognaise',desc:'Ragù de bœuf mijoté, parmesan, basilic frais',price:'XOF 4 500'},{name:'Poulet Cordon Bleu',desc:'Poulet pané, jambon, fromage, sauce crémeuse aux champignons',price:'XOF 6 000'},{name:'Steak au Poivre',desc:'Bœuf premium, sauce au poivre, frites, salade',price:'XOF 8 500'},{name:'Lasagne al Forno',desc:'Lasagnes, ragù de bœuf, béchamel, parmesan',price:'XOF 5 500'}],
+    bar:[{name:'Garden Mile',desc:'Gin, concombre, sureau, tonic frais',price:'XOF 3 500'},{name:'Kente Sour',desc:'Rhum, fruit de la passion, hibiscus, mousse de citron vert',price:'XOF 3 000'},{name:'Blue Lagoon',desc:'Vodka, curaçao bleu, citron, ananas',price:'XOF 3 200'},{name:'Trio de Jus Frais',desc:'Mangue, ananas ou bissap (hibiscus) — pressés minute',price:'XOF 2 000'}],
+  }
+};
+
+let currentLang = 'en';
+let currentMenuKey = 'grill';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('lang-splash').classList.add('hidden');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = T[lang][el.getAttribute('data-i18n')];
+    if (val !== undefined) el.innerHTML = val;
+  });
+  document.getElementById('inp-special').placeholder = T[lang]['form.specialph'];
+  document.getElementById('menu-photo').setAttribute('data-caption', T[lang]['menu.caption']);
+  const gSel = document.getElementById('sel-guests');
+  const vSel = document.getElementById('sel-venue');
+  gSel.innerHTML = T[lang]['guests'].map(g => `<option>${g}</option>`).join('');
+  gSel.selectedIndex = 3;
+  vSel.innerHTML = T[lang]['venues_opts'].map(v => `<option>${v}</option>`).join('');
+  refreshMenuList(currentMenuKey);
+}
+
+function refreshMenuList(key) {
+  currentMenuKey = key;
+  const list = document.getElementById('menu-list');
+  const items = menuData[currentLang][key];
+  if (!items) return;
+  list.innerHTML = items.map(item => `
+    <li>
+      <div><span class="menu-item-name">${item.name}</span><span class="menu-item-desc">${item.desc}</span></div>
+      <span class="menu-item-price">${item.price}</span>
+    </li>`).join('');
+}
+
+function switchMenu(btn, key) {
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const list = document.getElementById('menu-list');
+  list.style.opacity = '0'; list.style.transform = 'translateY(10px)';
+  setTimeout(() => {
+    refreshMenuList(key);
+    list.style.transition = 'opacity 0.4s, transform 0.4s';
+    list.style.opacity = '1'; list.style.transform = 'translateY(0)';
+  }, 180);
+}
+
+function handleReservation(e) {
+  e.preventDefault();
+  const btn = document.getElementById('res-btn');
+  btn.innerHTML = T[currentLang]['form.success'];
+  btn.style.background = 'var(--green-accent)';
+  btn.style.color = 'var(--cream)';
+  btn.disabled = true;
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Initialize with English content pre-filled (in case user bypasses splash)
+setLang('en');
+</script>
+</body>
+</html>
