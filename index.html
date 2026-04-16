@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,8 @@
 <meta property="og:title" content="Extramile Garden — Luxury Restaurant, Bar & Events · Abomey-Calavi, Bénin">
 <meta property="og:description" content="Pizzeria · Grill · Bar & Café · African & European Cuisine · House of Games · Event Halls. Abomey-Calavi, Bénin.">
 <meta property="og:type" content="restaurant.restaurant">
-<meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="/.netlify/images?url=/images/hero.jpg&w=1200&q=82">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="/">
@@ -288,10 +288,10 @@ footer > * { position: relative; z-index: 1; }
   <div class="splash-logo">Extra<em>Mile</em>Garden</div>
   <div class="splash-sub">Abomey-Calavi · Bénin</div>
   <div class="splash-line"></div>
-  <p class="splash-prompt">Please select your language &nbsp;·&nbsp; Veuillez choisir votre langue</p>
+  <p class="splash-prompt">Veuillez choisir votre langue &nbsp;·&nbsp; Please select your language</p>
   <div class="lang-btns">
-    <button class="lang-btn" onclick="setLang('en')"><span class="lang-flag">🇬🇧 ENGLISH</span>English</button>
     <button class="lang-btn" onclick="setLang('fr')"><span class="lang-flag">🇫🇷 FRANÇAIS</span>Français</button>
+    <button class="lang-btn" onclick="setLang('en')"><span class="lang-flag">🇬🇧 ENGLISH</span>English</button>
   </div>
 </div>
 
@@ -308,8 +308,8 @@ footer > * { position: relative; z-index: 1; }
   </ul>
   <div class="nav-right">
     <div class="lang-toggle">
-      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-      <button id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+      <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
     </div>
     <button class="nav-reserve" data-i18n="nav.reserve" onclick="document.getElementById('reservations').scrollIntoView({behavior:'smooth'})">Reserve a Table</button>
   </div>
@@ -742,7 +742,7 @@ const menuData = {
   }
 };
 
-let currentLang = 'en';
+let currentLang = 'fr';
 let currentMenuKey = 'grill';
 
 function setLang(lang) {
@@ -820,8 +820,8 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Initialize with English content pre-filled (in case user bypasses splash)
-setLang('en');
+// Initialize with French content pre-filled (in case user bypasses splash)
+setLang('fr');
 </script>
 </body>
 </html>
