@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Extramile Garden — Abomey-Calavi, Bénin · Restaurant, Bar, Pizzeria, Events</title>
+<meta name="description" content="Extramile Garden — Abomey-Calavi's premier luxury destination. Wood-fired pizzeria, open-flame grill, bar & café, African & European cuisine, House of Games, and elegant event halls set in a curated garden in Bénin.">
+<meta name="keywords" content="Extramile Garden, Abomey-Calavi, Bénin, Benin, restaurant, luxury restaurant, pizzeria, grill, bar, African cuisine, European cuisine, events, conferences, gaming lounge">
+<meta name="author" content="Extramile Garden">
+<meta name="theme-color" content="#0d1f14">
+<meta property="og:title" content="Extramile Garden — Luxury Restaurant, Bar & Events · Abomey-Calavi, Bénin">
+<meta property="og:description" content="Pizzeria · Grill · Bar & Café · African & European Cuisine · House of Games · Event Halls. Abomey-Calavi, Bénin.">
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="/.netlify/images?url=/images/hero.jpg&w=1200&q=82">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1f14'/><text x='50%25' y='60%25' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-style='italic' fill='%23c8a45a'>e</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/.netlify/images?url=/images/hero.jpg&w=1920&q=72" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Extramile Garden",
+  "description": "Luxury garden restaurant with pizzeria, grill, bar, African & European cuisine, House of Games, and event halls in Abomey-Calavi, Bénin.",
+  "image": "/.netlify/images?url=/images/hero.jpg&w=1200&q=82",
+  "servesCuisine": ["African", "European", "Italian", "Pizza", "Grill"],
+  "priceRange": "$$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Zopah, C/229 (Y-Z)",
+    "addressLocality": "Abomey-Calavi",
+    "postalCode": "01 BP 5754",
+    "addressCountry": "BJ"
+  },
+  "telephone": ["+229 01 96 72 78 75", "+229 01 51 51 22 77"],
+  "email": "extramile.business.group@gmail.com",
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"12:00","closes":"23:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"11:00","closes":"00:00"}
+  ]
+}
+</script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -21,7 +61,7 @@ body { font-family: 'Jost', sans-serif; background: var(--green-deep); color: va
 
 /* SPLASH */
 #lang-splash { position: fixed; inset: 0; z-index: 9999; background: var(--green-deep); display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.7s ease, visibility 0.7s; overflow: hidden; }
-#lang-splash .bg-layer { background-image: url('images/greenwall.jpg'); filter: brightness(0.35) blur(2px); }
+#lang-splash .bg-layer { background-image: url('/.netlify/images?url=/images/greenwall.jpg&w=1600&q=65'); filter: brightness(0.35) blur(2px); }
 #lang-splash .bg-overlay { background: radial-gradient(ellipse at center, rgba(13,31,20,0.75) 0%, rgba(13,31,20,0.95) 75%); }
 #lang-splash > *:not(.bg-layer):not(.bg-overlay) { position: relative; z-index: 2; }
 #lang-splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -54,7 +94,7 @@ nav.scrolled { background: rgba(13,31,20,0.97); border-bottom: 0.5px solid var(-
 
 /* HERO */
 .hero { min-height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 0 2rem; }
-.hero .bg-layer { background-image: url('images/hero.jpg'); }
+.hero .bg-layer { background-image: url('/.netlify/images?url=/images/hero.jpg&w=1920&q=72'); }
 .hero .bg-overlay { background: linear-gradient(165deg, rgba(13,31,20,0.55) 0%, rgba(13,31,20,0.35) 45%, rgba(13,31,20,0.75) 100%), radial-gradient(ellipse 70% 60% at 50% 40%, transparent 0%, rgba(13,31,20,0.4) 100%); }
 .hero > *:not(.bg-layer):not(.bg-overlay) { position: relative; z-index: 2; }
 .hero-eyebrow { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; opacity: 0; animation: fadeUp 0.9s 0.3s forwards; }
@@ -83,8 +123,8 @@ section { padding: 8rem 4rem; position: relative; }
 .about { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; background: var(--green-deep); }
 .about-visual { position: relative; height: 580px; }
 .about-img-main, .about-img-sub { position: absolute; background-size: cover; background-position: center; border: 0.5px solid var(--border); }
-.about-img-main { inset: 0 4rem 4rem 0; background-image: url('images/team.jpg'); }
-.about-img-sub { width: 55%; height: 48%; bottom: 0; right: 0; background-image: url('images/greenwall.jpg'); border: 0.5px solid var(--gold); }
+.about-img-main { inset: 0 4rem 4rem 0; background-image: url('/.netlify/images?url=/images/team.jpg&w=900&q=78'); }
+.about-img-sub { width: 55%; height: 48%; bottom: 0; right: 0; background-image: url('/.netlify/images?url=/images/greenwall.jpg&w=700&q=72'); border: 0.5px solid var(--gold); }
 .about-leaf { position: absolute; top: -1.5rem; left: 2rem; font-family: 'Cormorant Garamond', serif; font-size: 7rem; color: rgba(200,164,90,0.3); line-height: 1; pointer-events: none; user-select: none; z-index: 2; }
 .about-badge { position: absolute; bottom: 2rem; left: 2rem; padding: 1.2rem 1.5rem; background: rgba(13,31,20,0.92); backdrop-filter: blur(8px); border-left: 2px solid var(--gold); z-index: 2; max-width: 280px; }
 .about-badge p { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--gold-light); line-height: 1.5; }
@@ -114,7 +154,7 @@ section { padding: 8rem 4rem; position: relative; }
 
 /* GAMES */
 .games-section { background: var(--green-deep); position: relative; overflow: hidden; }
-.games-section > .bg-layer { background-image: url('images/games.jpg'); opacity: 0.12; filter: blur(3px); }
+.games-section > .bg-layer { background-image: url('/.netlify/images?url=/images/games.jpg&w=1600&q=60'); opacity: 0.12; filter: blur(3px); }
 .games-section > *:not(.bg-layer) { position: relative; z-index: 1; }
 .games-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
 .games-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; margin-top: 2rem; }
@@ -123,7 +163,7 @@ section { padding: 8rem 4rem; position: relative; }
 .game-feat-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); margin-bottom: 0.25rem; }
 .game-feat-desc { font-size: 0.78rem; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
 .games-visual-wrap { position: relative; max-width: 480px; margin: 0 auto; }
-.games-photo { width: 100%; aspect-ratio: 3/4; background: url('images/games.jpg') center/cover no-repeat; border: 0.5px solid var(--border); position: relative; }
+.games-photo { width: 100%; aspect-ratio: 3/4; background: url('/.netlify/images?url=/images/games.jpg&w=700&q=78') center/cover no-repeat; border: 0.5px solid var(--border); position: relative; }
 .games-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,31,20,0.3), transparent 40%); }
 .games-tag { margin-top: 1.2rem; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); text-align: right; display: block; }
 
@@ -140,12 +180,12 @@ section { padding: 8rem 4rem; position: relative; }
 .menu-tab:last-child { border-right: none; }
 .menu-tab.active { background: var(--gold); color: var(--green-deep); }
 .menu-visual { position: relative; display: flex; align-items: center; justify-content: center; }
-.menu-photo { width: 100%; max-width: 460px; aspect-ratio: 3/4; background: url('images/menu_book.jpg') center/cover no-repeat; border: 0.5px solid var(--border); position: relative; }
+.menu-photo { width: 100%; max-width: 460px; aspect-ratio: 3/4; background: url('/.netlify/images?url=/images/menu_book.jpg&w=700&q=80') center/cover no-repeat; border: 0.5px solid var(--border); position: relative; }
 .menu-photo::after { content: attr(data-caption); position: absolute; bottom: 0; left: 0; right: 0; padding: 1.2rem; background: linear-gradient(to top, rgba(13,31,20,0.95), transparent); color: var(--gold-light); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; text-align: center; }
 
 /* EVENTS */
 .events { background: var(--green-deep); text-align: center; position: relative; overflow: hidden; }
-.events > .bg-layer { background-image: url('images/events.jpg'); opacity: 0.18; }
+.events > .bg-layer { background-image: url('/.netlify/images?url=/images/events.jpg&w=1600&q=62'); opacity: 0.18; }
 .events > .bg-overlay { background: linear-gradient(to bottom, rgba(13,31,20,0.8), rgba(13,31,20,0.95)); }
 .events > *:not(.bg-layer):not(.bg-overlay) { position: relative; z-index: 2; }
 .events-inner { max-width: 780px; margin: 0 auto; }
@@ -157,7 +197,7 @@ section { padding: 8rem 4rem; position: relative; }
 
 /* RESERVATIONS */
 .reservations { background: var(--green-mid); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; position: relative; overflow: hidden; }
-.reservations > .bg-layer { background-image: url('images/menu.jpg'); opacity: 0.08; }
+.reservations > .bg-layer { background-image: url('/.netlify/images?url=/images/menu.jpg&w=1600&q=55'); opacity: 0.08; }
 .reservations > *:not(.bg-layer) { position: relative; z-index: 1; }
 .res-form { display: flex; flex-direction: column; gap: 1.2rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
@@ -186,7 +226,7 @@ section { padding: 8rem 4rem; position: relative; }
 
 /* FOOTER */
 footer { background: #080f0a; padding: 5rem 4rem 3rem; border-top: 0.5px solid var(--border); position: relative; overflow: hidden; }
-footer::before { content: ''; position: absolute; inset: 0; background: url('images/sign_night.jpg') center/cover no-repeat; opacity: 0.05; z-index: 0; }
+footer::before { content: ''; position: absolute; inset: 0; background: url('/.netlify/images?url=/images/sign_night.jpg&w=1600&q=55') center/cover no-repeat; opacity: 0.05; z-index: 0; }
 footer > * { position: relative; z-index: 1; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
 .footer-brand .nav-logo { font-size: 1.8rem; display: block; margin-bottom: 1rem; }
@@ -201,6 +241,18 @@ footer > * { position: relative; z-index: 1; }
 .footer-socials { display: flex; gap: 1.5rem; }
 .footer-socials a { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
 .footer-socials a:hover { color: var(--gold); }
+
+.contact-link { color: inherit; text-decoration: none; border-bottom: 0.5px dotted rgba(200,164,90,0.35); transition: color 0.2s, border-color 0.2s; }
+.contact-link:hover { color: var(--gold-light); border-color: var(--gold); }
+
+.skip-link { position: absolute; top: -60px; left: 1rem; z-index: 10000; background: var(--gold); color: var(--green-deep); padding: 0.7rem 1rem; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: top 0.2s; }
+.skip-link:focus { top: 1rem; }
+
+/* Floating WhatsApp */
+.fab-wa { position: fixed; bottom: 1.3rem; right: 1.3rem; z-index: 90; width: 54px; height: 54px; border-radius: 50%; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 0 rgba(37,211,102,0.55); transition: transform 0.25s, box-shadow 0.25s; animation: waPulse 2.4s infinite; }
+.fab-wa:hover { transform: scale(1.08); animation: none; box-shadow: 0 10px 28px rgba(0,0,0,0.5); }
+.fab-wa svg { width: 26px; height: 26px; fill: #fff; }
+@keyframes waPulse { 0% { box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 0 rgba(37,211,102,0.6); } 70% { box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 16px rgba(37,211,102,0); } 100% { box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 0 rgba(37,211,102,0); } }
 
 @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
 @keyframes scrollPulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
@@ -228,16 +280,18 @@ footer > * { position: relative; z-index: 1; }
 </head>
 <body>
 
+<a href="#about" class="skip-link">Skip to content</a>
+
 <div id="lang-splash">
   <div class="bg-layer"></div>
   <div class="bg-overlay"></div>
   <div class="splash-logo">Extra<em>Mile</em>Garden</div>
   <div class="splash-sub">Abomey-Calavi · Bénin</div>
   <div class="splash-line"></div>
-  <p class="splash-prompt">Please select your language &nbsp;·&nbsp; Veuillez choisir votre langue</p>
+  <p class="splash-prompt">Veuillez choisir votre langue &nbsp;·&nbsp; Please select your language</p>
   <div class="lang-btns">
-    <button class="lang-btn" onclick="setLang('en')"><span class="lang-flag">🇬🇧 ENGLISH</span>English</button>
     <button class="lang-btn" onclick="setLang('fr')"><span class="lang-flag">🇫🇷 FRANÇAIS</span>Français</button>
+    <button class="lang-btn" onclick="setLang('en')"><span class="lang-flag">🇬🇧 ENGLISH</span>English</button>
   </div>
 </div>
 
@@ -254,8 +308,8 @@ footer > * { position: relative; z-index: 1; }
   </ul>
   <div class="nav-right">
     <div class="lang-toggle">
-      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-      <button id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+      <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
     </div>
     <button class="nav-reserve" data-i18n="nav.reserve" onclick="document.getElementById('reservations').scrollIntoView({behavior:'smooth'})">Reserve a Table</button>
   </div>
@@ -307,42 +361,42 @@ footer > * { position: relative; z-index: 1; }
   </div>
   <div class="venues-grid">
     <div class="venue-card reveal">
-      <div class="venue-img" style="background-image:url('images/pizzeria.jpg');"></div>
+      <div class="venue-img" style="background-image:url('/.netlify/images?url=/images/pizzeria.jpg&w=700&q=72');"></div>
       <span class="venue-number">01</span><span class="venue-icon">🍕</span>
       <h3 class="venue-name" data-i18n="v1.name">The Pizzeria</h3>
       <span class="venue-tag" data-i18n="v1.tag">Wood-Fired Artisan Pizza</span>
       <p class="venue-desc" data-i18n="v1.desc">Loading…</p>
     </div>
     <div class="venue-card reveal" style="transition-delay:0.08s;">
-      <div class="venue-img" style="background-image:url('images/grill.jpg');"></div>
+      <div class="venue-img" style="background-image:url('/.netlify/images?url=/images/grill.jpg&w=700&q=72');"></div>
       <span class="venue-number">02</span><span class="venue-icon">🔥</span>
       <h3 class="venue-name" data-i18n="v2.name">The Grill</h3>
       <span class="venue-tag" data-i18n="v2.tag">Fresh Cuts &amp; Open Flame</span>
       <p class="venue-desc" data-i18n="v2.desc">Loading…</p>
     </div>
     <div class="venue-card reveal" style="transition-delay:0.16s;">
-      <div class="venue-img" style="background-image:url('images/bar.jpg');"></div>
+      <div class="venue-img" style="background-image:url('/.netlify/images?url=/images/bar.jpg&w=700&q=72');"></div>
       <span class="venue-number">03</span><span class="venue-icon">🍸</span>
       <h3 class="venue-name" data-i18n="v3.name">Bar &amp; Café</h3>
       <span class="venue-tag" data-i18n="v3.tag">Cocktails, Coffee &amp; Refreshments</span>
       <p class="venue-desc" data-i18n="v3.desc">Loading…</p>
     </div>
     <div class="venue-card reveal" style="transition-delay:0.24s;">
-      <div class="venue-img" style="background-image:url('images/african.jpg');"></div>
+      <div class="venue-img" style="background-image:url('/.netlify/images?url=/images/african.jpg&w=700&q=72');"></div>
       <span class="venue-number">04</span><span class="venue-icon">🌍</span>
       <h3 class="venue-name" data-i18n="v4.name">African Cuisine</h3>
       <span class="venue-tag" data-i18n="v4.tag">Heritage &amp; Bold Tradition</span>
       <p class="venue-desc" data-i18n="v4.desc">Loading…</p>
     </div>
     <div class="venue-card reveal" style="transition-delay:0.32s;">
-      <div class="venue-img" style="background-image:url('images/european.jpg');"></div>
+      <div class="venue-img" style="background-image:url('/.netlify/images?url=/images/european.jpg&w=700&q=72');"></div>
       <span class="venue-number">05</span><span class="venue-icon">🥂</span>
       <h3 class="venue-name" data-i18n="v5.name">European Cuisine</h3>
       <span class="venue-tag" data-i18n="v5.tag">Classic Elegance &amp; Refinement</span>
       <p class="venue-desc" data-i18n="v5.desc">Loading…</p>
     </div>
     <div class="venue-card games-card reveal" style="transition-delay:0.40s;">
-      <div class="venue-img" style="background-image:url('images/games.jpg');"></div>
+      <div class="venue-img" style="background-image:url('/.netlify/images?url=/images/games.jpg&w=700&q=72');"></div>
       <span class="venue-new" data-i18n="venue.new">NEW</span>
       <span class="venue-number">06</span><span class="venue-icon">🎮</span>
       <h3 class="venue-name" data-i18n="v6.name">House of Games</h3>
@@ -350,7 +404,7 @@ footer > * { position: relative; z-index: 1; }
       <p class="venue-desc" data-i18n="v6.desc">Loading…</p>
     </div>
     <div class="venue-card reveal" style="transition-delay:0.48s;">
-      <div class="venue-img" style="background-image:url('images/events.jpg');"></div>
+      <div class="venue-img" style="background-image:url('/.netlify/images?url=/images/events.jpg&w=700&q=72');"></div>
       <span class="venue-number">07</span><span class="venue-icon">✨</span>
       <h3 class="venue-name" data-i18n="v7.name">Event Halls</h3>
       <span class="venue-tag" data-i18n="v7.tag">Conferences &amp; Celebrations</span>
@@ -445,13 +499,13 @@ footer > * { position: relative; z-index: 1; }
     <div class="section-divider"></div>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery1.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl1">The Garden Terrace</span></div>
-    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery2.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl2">Bamboo Dining</span></div>
-    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery3.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl3">Night Ambience</span></div>
-    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery4.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl4">Event Stage</span></div>
-    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery5.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl5">Main Courtyard</span></div>
-    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery6.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl6">Bar &amp; Mixology</span></div>
-    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('images/gallery7.jpg');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl7">Conference Room</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('/.netlify/images?url=/images/gallery1.jpg&w=1200&q=78');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl1">The Garden Terrace</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('/.netlify/images?url=/images/gallery2.jpg&w=700&q=75');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl2">Bamboo Dining</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('/.netlify/images?url=/images/gallery3.jpg&w=700&q=75');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl3">Night Ambience</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('/.netlify/images?url=/images/gallery4.jpg&w=1000&q=76');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl4">Event Stage</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('/.netlify/images?url=/images/gallery5.jpg&w=700&q=75');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl5">Main Courtyard</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('/.netlify/images?url=/images/gallery6.jpg&w=1000&q=76');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl6">Bar &amp; Mixology</span></div>
+    <div class="gallery-item"><div class="gallery-item-bg" style="background-image:url('/.netlify/images?url=/images/gallery7.jpg&w=700&q=75');"></div><div class="gallery-overlay"></div><span class="gallery-label" data-i18n="gl7">Conference Room</span></div>
   </div>
 </section>
 
@@ -464,54 +518,61 @@ footer > * { position: relative; z-index: 1; }
     <p class="section-text" data-i18n="res.p1">Loading…</p>
     <p class="section-text" style="margin-top:1.5rem;" data-i18n="res.p2">Loading…</p>
     <p class="section-text" style="margin-top:2rem;font-size:0.85rem;line-height:2;">
-      <span style="color:var(--gold);">📞</span>&nbsp; +229 01 96 72 78 75<br>
-      <span style="color:var(--gold);">📞</span>&nbsp; +229 01 51 51 22 77<br>
-      <span style="color:var(--gold);">✉</span>&nbsp; extramile.business.group@gmail.com<br>
-      <span style="color:var(--gold);">📍</span>&nbsp; <span data-i18n="res.address">Abomey-Calavi, Zopah, C/229 (Y-Z)<br>&nbsp;&nbsp;&nbsp;&nbsp; 01 BP 5754 Cotonou, Bénin</span>
+      <span style="color:var(--gold);">📞</span>&nbsp; <a href="tel:+2290196727875" class="contact-link">+229 01 96 72 78 75</a><br>
+      <span style="color:var(--gold);">📞</span>&nbsp; <a href="tel:+2290151512277" class="contact-link">+229 01 51 51 22 77</a><br>
+      <span style="color:var(--gold);">💬</span>&nbsp; <a href="https://wa.me/2290196727875" target="_blank" rel="noopener" class="contact-link">WhatsApp&nbsp;·&nbsp;+229 01 96 72 78 75</a><br>
+      <span style="color:var(--gold);">✉</span>&nbsp; <a href="mailto:extramile.business.group@gmail.com" class="contact-link">extramile.business.group@gmail.com</a><br>
+      <span style="color:var(--gold);">📍</span>&nbsp; <a href="https://www.google.com/maps/search/?api=1&query=Extramile+Garden+Abomey-Calavi+Zopah+Benin" target="_blank" rel="noopener" class="contact-link"><span data-i18n="res.address">Abomey-Calavi, Zopah, C/229 (Y-Z)<br>&nbsp;&nbsp;&nbsp;&nbsp; 01 BP 5754 Cotonou, Bénin</span></a>
     </p>
   </div>
   <div class="reveal" style="transition-delay:0.2s;">
-    <form class="res-form" onsubmit="handleReservation(event)">
+    <form class="res-form" name="reservation" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleReservation(event)">
+      <input type="hidden" name="form-name" value="reservation">
+      <p class="hp-field" style="position:absolute;left:-9999px;" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label" data-i18n="form.fname">First Name</label>
-          <input type="text" class="form-input" placeholder="Kofi">
+          <label class="form-label" data-i18n="form.fname" for="fn">First Name</label>
+          <input type="text" id="fn" name="first_name" class="form-input" placeholder="Kofi" required autocomplete="given-name">
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.lname">Last Name</label>
-          <input type="text" class="form-input" placeholder="Agbodjan">
+          <label class="form-label" data-i18n="form.lname" for="ln">Last Name</label>
+          <input type="text" id="ln" name="last_name" class="form-input" placeholder="Agbodjan" required autocomplete="family-name">
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label" data-i18n="form.email">Email Address</label>
-        <input type="email" class="form-input" placeholder="your@email.com">
+        <label class="form-label" data-i18n="form.email" for="em">Email Address</label>
+        <input type="email" id="em" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email">
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label" data-i18n="form.date">Date</label>
-          <input type="date" class="form-input">
+          <label class="form-label" data-i18n="form.phone" for="ph">Phone</label>
+          <input type="tel" id="ph" name="phone" class="form-input" placeholder="+229 …" autocomplete="tel">
         </div>
         <div class="form-group">
-          <label class="form-label" data-i18n="form.time">Time</label>
-          <select class="form-select">
+          <label class="form-label" data-i18n="form.date" for="dt">Date</label>
+          <input type="date" id="dt" name="date" class="form-input" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form.time" for="tm">Time</label>
+          <select class="form-select" id="tm" name="time">
             <option>12:00</option><option>13:00</option><option>14:00</option>
             <option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option>
           </select>
         </div>
-      </div>
-      <div class="form-row">
         <div class="form-group">
-          <label class="form-label" data-i18n="form.guests">Guests</label>
-          <select class="form-select" id="sel-guests"></select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-i18n="form.venue">Venue Preference</label>
-          <select class="form-select" id="sel-venue"></select>
+          <label class="form-label" data-i18n="form.guests" for="sel-guests">Guests</label>
+          <select class="form-select" id="sel-guests" name="guests"></select>
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label" data-i18n="form.special">Special Requests</label>
-        <input type="text" class="form-input" id="inp-special" placeholder="Dietary requirements, occasion, seating preference…">
+        <label class="form-label" data-i18n="form.venue" for="sel-venue">Venue Preference</label>
+        <select class="form-select" id="sel-venue" name="venue"></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="form.special" for="inp-special">Special Requests</label>
+        <input type="text" class="form-input" id="inp-special" name="special_requests" placeholder="Dietary requirements, occasion, seating preference…">
       </div>
       <button type="submit" class="btn-primary" id="res-btn" data-i18n="form.submit" style="width:100%;margin-top:0.5rem;padding:1.1rem;font-size:0.72rem;letter-spacing:0.22em;">Confirm Reservation</button>
     </form>
@@ -543,18 +604,22 @@ footer > * { position: relative; z-index: 1; }
     </div>
     <div class="footer-col reveal" style="transition-delay:0.3s;">
       <h4 data-i18n="footer.findus">Find Us</h4>
-      <p>Extramile Garden<br>Abomey-Calavi, Zopah<br>C/229 (Y-Z), Bénin</p>
-      <p style="margin-top:0.8rem;">extramile.business.group@gmail.com</p>
-      <p style="margin-top:0.8rem;">+229 01 96 72 78 75<br>+229 01 51 51 22 77</p>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=Extramile+Garden+Abomey-Calavi+Zopah+Benin" target="_blank" rel="noopener" class="contact-link">Extramile Garden<br>Abomey-Calavi, Zopah<br>C/229 (Y-Z), Bénin</a></p>
+      <p style="margin-top:0.8rem;"><a href="mailto:extramile.business.group@gmail.com" class="contact-link">extramile.business.group@gmail.com</a></p>
+      <p style="margin-top:0.8rem;"><a href="tel:+2290196727875" class="contact-link">+229 01 96 72 78 75</a><br><a href="tel:+2290151512277" class="contact-link">+229 01 51 51 22 77</a></p>
     </div>
   </div>
   <div class="footer-bottom">
     <p data-i18n="footer.copy">© 2025 Extramile Garden. All rights reserved.</p>
     <div class="footer-socials">
-      <a href="#">Instagram</a><a href="#">Facebook</a><a href="#">WhatsApp</a><a href="#">Google Maps</a>
+      <a href="https://www.instagram.com/extramilegarden" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a><a href="https://www.facebook.com/extramilegarden" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a><a href="https://wa.me/2290196727875" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&query=Extramile+Garden+Abomey-Calavi+Zopah+Benin" target="_blank" rel="noopener" aria-label="Google Maps">Google Maps</a>
     </div>
   </div>
 </footer>
+
+<a class="fab-wa" href="https://wa.me/2290196727875?text=Hello%20Extramile%20Garden%2C%20I%27d%20like%20to%20make%20a%20reservation." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1s-.5-.1-.7.2-.8 1-1 1.2-.3.2-.6.1c-.9-.5-1.9-1-2.7-2.1-.7-.9-1-1.5-1.1-1.8s0-.4.1-.6.2-.3.4-.5.2-.3.3-.5 0-.4 0-.5-.7-1.7-1-2.3-.5-.6-.7-.6h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.2 3 2.1 3.3 5.1 4.6c.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4s.3-1.3.2-1.4-.2-.2-.5-.3z"/><path d="M20.5 3.5A10.5 10.5 0 0 0 3.2 17.3L2 22l4.8-1.2a10.5 10.5 0 0 0 5.2 1.3h.1a10.5 10.5 0 0 0 8.4-18.6zm-8.4 16.2a8.7 8.7 0 0 1-4.5-1.2l-.3-.2-3 .8.8-2.8-.2-.3a8.7 8.7 0 1 1 7.2 3.7z"/></svg>
+</a>
 
 <script>
 const T = {
@@ -598,9 +663,9 @@ const T = {
     'res.p1':'We invite you to join us for an experience that goes well beyond a meal. Kindly complete the form and our team will confirm your reservation within 24 hours.',
     'res.p2':'For same-day reservations or large groups, please call us directly or send a WhatsApp message.',
     'res.address':'Abomey-Calavi, Zopah, C/229 (Y-Z)<br>&nbsp;&nbsp;&nbsp;&nbsp; 01 BP 5754 Cotonou, Bénin',
-    'form.fname':'First Name','form.lname':'Last Name','form.email':'Email Address','form.date':'Date','form.time':'Time','form.guests':'Guests','form.venue':'Venue Preference',
+    'form.fname':'First Name','form.lname':'Last Name','form.email':'Email Address','form.phone':'Phone','form.date':'Date','form.time':'Time','form.guests':'Guests','form.venue':'Venue Preference',
     'form.special':'Special Requests','form.specialph':'Dietary requirements, occasion, seating preference…',
-    'form.submit':'Confirm Reservation','form.success':'✓ Reservation Received — We will confirm within 24 hours',
+    'form.submit':'Confirm Reservation','form.success':'✓ Reservation Received — We will confirm within 24 hours','form.error':'Submission failed — please call us directly',
     'guests':['1 Guest','2 Guests','3 Guests','4 Guests','5–8 Guests','9–15 Guests','16+ Guests (Private Event)'],
     'venues_opts':['Pizzeria','The Grill','Bar & Café','African Cuisine','European Cuisine','House of Games','Event Hall','No Preference'],
     'footer.brand':"Abomey-Calavi's premier destination where extraordinary cuisine, warm hospitality, world-class games, and a beautifully curated garden setting create experiences that linger long after the last course.",
@@ -648,9 +713,9 @@ const T = {
     'res.p1':"Nous vous invitons à nous rejoindre pour une expérience qui va bien au-delà d'un repas. Veuillez remplir le formulaire et notre équipe confirmera votre réservation dans les 24 heures.",
     'res.p2':'Pour les réservations le jour même ou les grands groupes, veuillez nous appeler directement ou nous envoyer un message WhatsApp.',
     'res.address':'Abomey-Calavi, Zopah, C/229 (Y-Z)<br>&nbsp;&nbsp;&nbsp;&nbsp; 01 BP 5754 Cotonou, Bénin',
-    'form.fname':'Prénom','form.lname':'Nom de famille','form.email':'Adresse e-mail','form.date':'Date','form.time':'Heure','form.guests':'Convives','form.venue':'Espace souhaité',
+    'form.fname':'Prénom','form.lname':'Nom de famille','form.email':'Adresse e-mail','form.phone':'Téléphone','form.date':'Date','form.time':'Heure','form.guests':'Convives','form.venue':'Espace souhaité',
     'form.special':'Demandes spéciales','form.specialph':'Régimes alimentaires, occasion, préférence de place…',
-    'form.submit':'Confirmer la Réservation','form.success':'✓ Réservation reçue — Nous confirmerons dans les 24 heures',
+    'form.submit':'Confirmer la Réservation','form.success':'✓ Réservation reçue — Nous confirmerons dans les 24 heures','form.error':'Échec de l\u2019envoi — merci de nous appeler directement',
     'guests':['1 Convive','2 Convives','3 Convives','4 Convives','5 à 8 Convives','9 à 15 Convives','16+ Convives (Événement privé)'],
     'venues_opts':['Pizzeria','Le Grill','Bar & Café','Cuisine Africaine','Cuisine Européenne','Maison des Jeux','Salle de Fêtes','Aucune préférence'],
     'footer.brand':"La destination phare d'Abomey-Calavi où cuisine extraordinaire, hospitalité chaleureuse, jeux de classe mondiale et un magnifique jardin se rejoignent pour créer des expériences qui demeurent bien après le dernier plat.",
@@ -677,7 +742,7 @@ const menuData = {
   }
 };
 
-let currentLang = 'en';
+let currentLang = 'fr';
 let currentMenuKey = 'grill';
 
 function setLang(lang) {
@@ -726,11 +791,24 @@ function switchMenu(btn, key) {
 
 function handleReservation(e) {
   e.preventDefault();
+  const form = e.target;
   const btn = document.getElementById('res-btn');
-  btn.innerHTML = T[currentLang]['form.success'];
-  btn.style.background = 'var(--green-accent)';
-  btn.style.color = 'var(--cream)';
   btn.disabled = true;
+  btn.innerHTML = '…';
+  const data = new URLSearchParams(new FormData(form)).toString();
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data })
+    .then(r => {
+      if (!r.ok) throw new Error('Network');
+      btn.innerHTML = T[currentLang]['form.success'];
+      btn.style.background = 'var(--green-accent)';
+      btn.style.color = 'var(--cream)';
+    })
+    .catch(() => {
+      btn.disabled = false;
+      btn.innerHTML = T[currentLang]['form.error'] || 'Please try again';
+      btn.style.background = '#a33';
+      btn.style.color = 'var(--cream)';
+    });
 }
 
 window.addEventListener('scroll', () => {
@@ -742,8 +820,8 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Initialize with English content pre-filled (in case user bypasses splash)
-setLang('en');
+// Initialize with French content pre-filled (in case user bypasses splash)
+setLang('fr');
 </script>
 </body>
 </html>
